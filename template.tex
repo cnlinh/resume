@@ -1,0 +1,277 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Author : Leslie Cheng
+% License : MIT
+%-------------------------------------
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage[xetex]{hyperref}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Cao Ngoc Linh}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/cnlinh/}
+\def \linkedintext {/cnlinh}
+
+\def \phoneicon {\faPhone}
+\def \phonetext {+65 8106 6554}
+
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:linh.caongoc12@gmail.com}
+\def \emailtext {linh.caongoc12@gmail.com}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/cnlinh}
+\def \githubtext {/cnlinh}
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=links,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\linkedin}{\github}{}{\phone}{\email}{} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{\faGraduationCap}{Education}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {National University of Singapore - 1st Year}{2020 -- 2024}
+      {Bachelor of Computing (Honours) in Computer Science - GPA: N/A \newline University Scholars Program} {Singapore}
+    \resumeEntryTSDL
+      {NUS High School of Mathematics and Science}{2015 -- 2019}
+      {Honours in Mathematics \& Computer Science - GPA: 4.9/5.0 
+      \newline Dual Enrollment with NUS Computer Science - GPA: 4.5/5.0}{Singapore}
+    \resumeEntryTSDL
+      {Digipen Institute of Technology}{2017 -- 2017}
+      {Game Design Summer Exchange Program} {Redmond, WA, USA}
+    
+  \resumeEntryEnd
+
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{\faPieChart}{Experience}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {PIXTA Inc.}{May. 2020 -- Jul. 2020}
+      {Backend Developer Intern}{Hanoi, Vietnam}
+    \resumeItemListStart
+        \resumeItem {Isolate and containerise image processing microservices to reduce resource usage by 3x}
+        \resumeItem {Update image tracking system and increase test coverage from 70\% to 95\%}
+        \resumeItem {Implement logging database on Elasticsearch to process 50K messages/day}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {AppVenture Computing Club}{Nov. 2017 -- Nov. 2019}
+      {President}{Singapore}
+    \resumeItemListStart
+        \resumeItem {Lead 55 student developers to complete 8 school improvement projects such as digital meal coupon system}
+        \resumeItem {Run 20 school-wide events namely tech meetups, cybersecurity competitions and tech workshops}
+        \resumeItem {Manage club's website that showcases outstanding student projects}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Artificial Intelligence Singapore}{Nov. 2018 -- Nov. 2018}
+      {Community Outreach Intern}{Singapore}
+    \resumeItemListStart
+      \resumeItem {Design AI for Kids™ Bootcamp, sponsored by Facebook and has reached 300 primary students in 22 schools}
+      \resumeItem {Craft 6 online Machine Learning lessons hosted on AISG/Makerspaces}
+      \resumeItem {Develop drag-and-drop AI coding application with Scratch and Microsoft Azure Custom Vision}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {iHealthTech Lab}{Jul. 2018 -- Dec. 2018}
+      {Student Researcher}{Singapore}
+    \resumeItemListStart
+      \resumeItem {Program Arduino to calculate pulse from blood light absorption level and output to a self-healable display}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\section{\faFlask}{Projects}
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Interactive Display Launcher}{}
+    \resumeItemListStart
+      \resumeItem {Customized Android launcher with enhanced visibility and security features for school digital noticeboard}
+      \resumeItem {Synchronize school announcements stored in Firebase and bus timings using Singapore LTA API}
+    \resumeItemListEnd
+  \resumeEntryEnd
+  
+  \resumeEntryStart
+    \resumeEntryTD
+      {Enigma Machine Simulator}{}
+    \resumeItemListStart
+      \resumeItem {JavaFX visualization of encryption mechanism of WWII Enigma Machine}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD
+      {Blockchain Database}{}
+    \resumeItemListStart
+      \resumeItem {Simulation of Bitcoin blockchain ecosystem in relational database}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\section{\faGears}{Programming Skills}
+ \resumeEntryStart
+  \resumeEntryS{Language } {Python, Ruby, Java/JavaFX, mySQL, C, C++, Assembly}
+  \resumeEntryS{Skills } {Ruby on Rails, AWS, Docker, Kubernettes, ELK Stack, Scrum \& Agile}
+ \resumeEntryEnd
+
+\end{document}
